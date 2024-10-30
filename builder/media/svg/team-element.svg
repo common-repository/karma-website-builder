@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>c45</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M5,-5.15375503e-16 L34.3400002,-5.15375503e-16 L34.3400002,-8.8817842e-16 C37.1014239,-1.39542241e-15 39.3400002,2.23857625 39.3400002,5 L39.3400002,34.4500008 L39.3400002,34.4500008 C39.3400002,37.2114245 37.1014239,39.4500008 34.3400002,39.4500008 L5,39.4500008 L5,39.4500008 C2.23857625,39.4500008 3.38176876e-16,37.2114245 0,34.4500008 L0,5 L-8.8817842e-16,5 C-1.2263553e-15,2.23857625 2.23857625,-3.80934433e-16 5,-8.8817842e-16 Z" id="path-1"></path>
+        <linearGradient x1="31.6405587%" y1="19.9728907%" x2="78.0614578%" y2="95.600355%" id="linearGradient-3">
+            <stop stop-color="#3F77E0" offset="0%"></stop>
+            <stop stop-color="#3F7CEA" stop-opacity="0.251302083" offset="100%"></stop>
+        </linearGradient>
+        <path d="M24.0405405,9.00423729 C24.0405405,11.2199153 22.2478378,13.0084746 20.027027,13.0084746 C17.8062162,13.0084746 16.0135135,11.2199153 16.0135135,9.00423729 C16.0135135,6.78855932 17.8062162,5 20.027027,5 C22.2478378,5 24.0405405,6.78855932 24.0405405,9.00423729 Z M12,19.6822034 C12,17.0127119 17.3513514,15.5444915 20.027027,15.5444915 C22.7027027,15.5444915 28.0540541,17.0127119 28.0540541,19.6822034 L28.0540541,21.0169492 L12,21.0169492 L12,19.6822034 Z" id="path-4"></path>
+        <filter x="-9.3%" y="-9.4%" width="118.7%" height="118.7%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.0181659915   0 0 0 0 0.145576001   0 0 0 0 0.371439201  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="c155" transform="translate(-3.000000, -3.000000)">
+            <g id="c45" transform="translate(3.000000, 3.000000)">
+                <g id="c44">
+                    <g id="c43">
+                        <g id="c36">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use id="c34" fill="#4A8AF4" xlink:href="#path-1"></use>
+                            <polygon id="c35" fill="url(#linearGradient-3)" mask="url(#mask-2)" points="22.3930461 6 35.6988417 21.5742083 47.1298828 37.7773438 31.7324219 47.734375 12 20.372664 20.2257677 15.26439 16.4811908 11.3400099"></polygon>
+                        </g>
+                        <g id="c39" fill-rule="nonzero">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-4"></use>
+                        </g>
+                        <rect id="c41" fill-opacity="0.846976902" fill="#FFFFFF" x="17" y="26" width="6.88030888" height="1.52542373"></rect>
+                        <rect id="c42" fill-opacity="0.846976902" fill="#FFFFFF" x="12" y="30" width="16.0540541" height="1.52542373"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

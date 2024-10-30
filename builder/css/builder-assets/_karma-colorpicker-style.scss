@@ -1,0 +1,140 @@
+/** customize color picker styles **/
+
+.sp-container{
+	left: 657.69px;
+	overflow: inherit;
+	position: absolute;
+	top: 363px;
+	&:after {
+		background-color: #fff;
+		box-shadow: -2px -2px 5px 0 rgba($builder-main-color, 0.16);
+		content: '';
+		display: block;
+		height: 10px;
+		left: 45%;
+		position: absolute;
+		top: -5px;
+		transform: rotate(45deg);
+		width: 10px;
+	}
+}
+
+.sp-container .sp-picker-container {
+	border-left: none;
+}
+
+.sp-vertical-alpha .sp-hue {
+	@include box(11px, 120px);
+	@extend .karma-colorpicker-style-border-radius;
+	left: 152px;
+}
+
+.sp-fill {
+	padding-top: 68% !important;
+}
+
+.sp-color {
+	@include box(145px, 120px);
+	@extend .karma-colorpicker-style-border-radius-box;
+}
+
+.sp-val {
+	@include box(146px, 120px);
+	@extend .karma-colorpicker-style-border-radius-box;
+}
+
+.sp-vertical-alpha .sp-alpha-handle {
+	@include element_direction($top:-4px,$bottom:-4px, $left:50%);
+	background: transparent;
+	border: 1.5px solid #fff;
+	border-radius: 100px;
+	box-shadow: 0 1px 3px 1px rgba($builder-main-color, 0.3);
+	cursor: pointer;
+	opacity: 1;
+	position: absolute;
+	width: 6px;
+}
+
+.sp-vertical-alpha .sp-alpha .sp-alpha-handle {
+	@include element_direction($bottom: auto, $left: -3px);
+	@include box(14px, 3.5px);
+}
+
+.sp-vertical-alpha .sp-alpha {
+	@include box(11px, 120px);
+	@extend .karma-colorpicker-style-border-radius;
+	@include element_direction($top:0, $right:0, $left:168px);
+	position: absolute !important;
+}
+
+.sp-alpha .sp-alpha-inner {
+	@extend .karma-colorpicker-style-border-radius;
+	border: none;
+}
+
+.sp-val .sp-dragger {
+	@include box(5px, 5px);
+	@extend .karma-colorpicker-style-border-radius-box;
+	@include element_direction($top:0, $left:0);
+	background-color: transparent;
+	border: 1.5px solid #fff;
+	box-shadow: 0 1px 3px 1px rgba($builder-main-color, 0.3);
+	cursor: pointer;
+	position: absolute;
+
+}
+
+.sp-hue .sp-slider {
+	@include box(15px, 3.5px);
+	@include element_direction($top:0, $right:-4px, $bottom:auto, $left:-4px);
+	background: transparent;
+	border: 1.5px solid #fff;
+	border-radius: 100px;
+	box-shadow: 0 1px 3px 1px rgba($builder-main-color, 0.3);
+	cursor: pointer;
+	opacity: 1;
+	position: absolute;
+}
+
+.sp-container.sp-light {
+	@extend .karma-colorpicker-style-border-radius-box;
+	@extend .karma-builder-shadow-box-3;
+	background-color: #fff;
+	border: none;
+	padding: 0;
+}
+
+.sp-top-inner .sp-color, .sp-top-inner .sp-hue, .sp-clear {
+	@extend .karma-colorpicker-style-border-radius-box;
+	border: none;
+}
+
+/* Input */
+
+.sp-initial-disabled .sp-input-container {
+	width: 100%;
+}
+
+.sp-picker-container .sp-input {
+	background: transparent;
+	border: none;
+	color: $builder-main-color;
+	font-size: 14px !important;
+	margin: 0;
+	padding: 10px 4px;
+	width: 100%;
+}
+
+.sp-picker-container .sp-input:focus {
+	border: none;
+	outline: none;
+}
+
+.sp-picker-container {
+	@include box(197px, 170px);
+	box-sizing: border-box !important;
+}
+
+.sp-vertical-alpha:not(.sp-alpha-enabled) .sp-picker-container{
+	width: 183px;
+}

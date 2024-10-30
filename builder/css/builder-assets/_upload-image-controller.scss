@@ -1,0 +1,43 @@
+.karma-upload-image-content{
+	@include flexbox( $text-align:center, $align-item:center, $justify-content:center );
+	background-color: $builder-accent-color-4;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 115px;
+	position: relative;
+
+	.karma-image-buttons{
+	    @include oval-button();
+		text-transform: none;
+		transition: background-color .2s;
+		padding:0 20px;
+
+		&:hover{
+			background-color: #FFF;
+		}
+	}
+	a{
+		z-index: $level-20;
+
+		&:hover {
+			text-decoration: none;
+
+		}
+	}
+	.karma-cancel-image-button{
+		padding: 0 0 0 11px;
+
+	}
+
+}
+
+.karma-upload-image-has-image:after{
+	background-color: rgba(0, 0, 0, 0.2);
+	content: "";
+	height: 115px;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}

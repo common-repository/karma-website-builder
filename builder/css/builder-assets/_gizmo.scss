@@ -1,0 +1,1401 @@
+/* _-_-_- modules/GIZMO -_-_-_ */
+
+label {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	max-height: inherit;
+	max-width: inherit;
+}
+
+.karma-hide-shortcode-gizmo {
+	display: none !important;
+}
+
+.karma-spacing {
+	height: 5px;
+	position: relative;
+
+	&.karma-top-spacing-height {
+		height: 0
+	}
+
+	&.karma-top-spacing {
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+
+		.spacing-dot:after {
+			@include element_direction($top: 0, $left: -8px)
+		}
+	}
+
+	&.karma-left-spacing.ui-resizable.karma-left-spacing {
+
+		@include element_direction($top: 0, $left: 0 !important);
+		cursor: ew-resize;
+		height: 100%;
+		position: absolute;
+
+		.karma-spacing-dot-container {
+			cursor: ew-resize;
+			left: -1px !important;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 11px;
+		}
+
+		.spacing-dot:after {
+			@include element_direction($top: -8px, $left: 0)
+		}
+	}
+
+	&.karma-right-spacing.ui-resizable.karma-right-spacing {
+
+		@include element_direction($top: 0, $right: 0 !important, $left: initial !important);
+		cursor: ew-resize;
+		height: 100%;
+		position: absolute;
+
+		.karma-spacing-dot-container {
+			cursor: ew-resize;
+			left: calc(100% - 12px) !important;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.spacing-dot:after {
+			@include element_direction($top: -8px, $right: 0)
+		}
+	}
+
+	&.karma-bottom-spacing {
+		bottom: 0 !important;
+		left: 0;
+		position: absolute;
+		top: initial !important;
+		width: 100%;
+
+		.karma-spacing-dot-container {
+			bottom: -11px !important;
+			cursor: ns-resize;
+			top: initial !important;
+		}
+
+		.spacing-dot:after {
+			@include element_direction($bottom: 0, $left: -8px)
+		}
+	}
+}
+
+.karma-spacing .resize-handler {
+	@include box(100%, 100%);
+	position: absolute;
+}
+
+.tooltip-div {
+	@include box(39px, 16px);
+	align-items: center;
+	background-color: $builder-accent-color-1;
+	border-radius: 100px;
+	color: #fff;
+	display: none;
+	font-family: $builder-normal-font;
+	font-size: 9px;
+	justify-content: center;
+	line-height: 15px;
+	position: fixed;
+	text-align: center;
+	z-index: $level-20;
+
+}
+
+.column-gizmo-group {
+	display: none;
+}
+
+.karma-builder-element[data-name="karma_column"]:not(.karma-resizing-padding) .karma-builder-element:not(.karma-active-element) {
+	.karma-element-content:hover {
+		box-shadow: 0 0 0 1px $builder-accent-color;
+		cursor: pointer;
+		width: -moz-fit-content;
+		width: fit-content;
+		.karma-title-gizmo-template {
+			display: inline-block;
+		}
+	}
+}
+
+.karma-title-gizmo-template {
+	background-color: $builder-accent-color;
+	color: #ffffff;
+	cursor: pointer;
+	display: none;
+	font-family: $builder-bold-font;
+	font-size: 10px;
+	height: 16px;
+	left: -1px;
+	padding: 0 7px;
+	position: absolute;
+	top: -16px;
+	white-space: nowrap;
+	* {
+		line-height: 15px;
+	}
+}
+
+/* _-_-_- Image Gizmo Styles -_-_-_ */
+.karma-active-element[data-name="karma_image"] {
+
+	.karma-hide-gizmo {
+		display: none;
+	}
+
+	.karma-image-resize {
+		outline: 1px solid $builder-accent-color;
+	}
+	.left-crop {
+		background-color: $builder-accent-color;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 1px;
+		.crop-dot {
+			@extend .dot-gizmo;
+			left: -4px;
+			top: 50%;
+		}
+	}
+
+	.right-crop {
+		background-color: $builder-accent-color;
+		height: 100%;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 1px;
+		.crop-dot {
+			@extend .dot-gizmo;
+			right: -4px;
+			top: 50%;
+		}
+
+	}
+
+	.ui-resizable-w {
+		cursor: ew-resize;
+		left: -4px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.ui-resizable-e {
+		cursor: ew-resize;
+		right: -4px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	.bottom-crop {
+		background-color: $builder-accent-color;
+		bottom: 0;
+		height: 1px;
+		position: absolute;
+		width: 100%;
+		.crop-dot {
+			@extend .dot-gizmo;
+			bottom: -4px;
+			left: 50%;
+		}
+	}
+	.ui-resizable-s {
+		bottom: -4px;
+		cursor: ns-resize;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.ui-resizable-ne {
+		cursor: nw-resize;
+		left: -3px;
+		top: -3px;
+	}
+
+	.ui-resizable-se {
+		bottom: -3px;
+		cursor: ne-resize;
+		left: -3px;
+	}
+
+	.ui-resizable-nw {
+		cursor: sw-resize;
+		right: -3px;
+		top: -3px;
+	}
+
+	.ui-resizable-sw {
+		bottom: -3px;
+		cursor: nw-resize;
+		right: -3px;
+	}
+
+	.ui-resizable-handle:not(.ui-resizable-n) {
+		@include box(7px, 7px);
+		background-color: #fff;
+		border: 1px solid $builder-accent-color;
+		box-sizing: border-box;
+		position: absolute;
+		// jquery ui have inline style z-index
+		z-index: $level-20 !important;
+	}
+}
+
+/* _-_-_- New Section Styles -_-_-_ */
+.karma-new-section-icon {
+	@include box(32px, 32px);
+	@include flexbox(center, center, center);
+	background-color: $builder-accent-color;
+	border-radius: 50%;
+	bottom: 3px;
+	cursor: pointer;
+	left: 50%;
+	margin-left: 30px;
+	opacity: 0;
+	position: absolute;
+	transform: translateX(-50%);
+	transition: bottom .2s ease-In .4s, opacity .2s;
+	z-index: $level-20;
+
+	svg {
+		* {
+			cursor: pointer;
+			fill: #fff;
+		}
+	}
+}
+
+.karma-new-section {
+	@include flexbox(center, center, center);
+	background-color: #F4F9FF;
+	height: 0;
+	overflow: hidden;
+	transition: all 0.5s;
+
+	.karma-new-section-layout-items {
+		display: flex;
+		justify-content: space-between;
+		max-width: 1040px;
+		opacity: 0;
+		transition: opacity 0.2s , translate 0.2s;
+		visibility: hidden;
+		width: 100%;
+	}
+	.karma-new-section-layout {
+		cursor: pointer;
+		font-size: 0em;
+		line-height: normal;
+		padding: 11px;
+		position: relative;
+		top: 0;
+		transition-delay: 0s;
+		transition-duration: 0.3s;
+
+		&:hover {
+			background-color: #fff;
+			border-radius: 2px;
+			box-shadow: 0 6px 18px 4px rgba(65, 156, 248, 0.25);
+			padding: 11px;
+			top: -12px;
+			transition-delay: 0s;
+			transition-duration: 0.3s;
+
+			svg {
+				* {
+					transition-duration: 0.3s;
+					fill: $builder-accent-color-2;
+				}
+			}
+
+		}
+	}
+}
+
+.open-new-section {
+	height: 245px;
+	transition-duration: 0.5s;
+
+	.karma-new-section-layout-items {
+		opacity: 1;
+		transform: translateY(0px);
+		transition-delay: 0.2s;
+		transition-duration: .3s;
+		visibility: visible;
+	}
+}
+
+.karma-new-section-icon {
+	box-shadow: 0 4px 15px 3px rgba(65, 156, 248, 0.19);
+	svg {
+		transform: rotate(0deg);
+		transition: 0.3s;
+	}
+}
+
+.karma-new-section-icon.section-button-rotate {
+	bottom: -16px;
+	opacity: 1 !important;
+	transition: 0.3s;
+	svg {
+		transform: rotate(225deg);
+	}
+}
+
+body:not(.karma-builder-environment) {
+	.karma-element-content {
+		&:hover {
+			box-shadow: none !important;
+			cursor: default !important;
+		}
+	.karma-text,
+	.karma-image-both-resize
+		{
+			cursor: default !important;
+		}
+	}
+}
+
+.karma-builder-environment {
+	.karma-builder-element {
+		position: relative;
+		.karma-element-content {
+			position: relative;
+			width: fit-content;
+			width: -moz-fit-content;
+			.karma-spacing-dot-container {
+				display: none;
+			}
+		}
+
+		&.karma-first-section{
+			.karma-inner-gizmo-template{
+				top: 110px;
+			}
+		}
+
+		&.karma-active-element {
+			.karma-spacing {
+
+				&.karma-top-spacing {
+					cursor: ns-resize;
+					visibility: visible;
+					z-index: $level-0;
+				}
+			}
+
+			.karma-element-content > .karma-gizmo-template {
+				display: flex;
+			}
+
+			.karma-spacing-dot-container {
+				display: inline-block;
+			}
+
+			.karma-have-child-gizmo{
+
+				&.karma-show-child-gizmo{
+
+					.karma-gizmo-template{
+						display: flex;
+					}
+				}
+			}
+		}
+
+		&[data-name *= "karma_image"] {
+			max-width: 100%;
+
+		}
+
+
+
+		.karma-text {
+			*:focus {
+				min-width: 20px;
+				box-shadow:0px 0px 0px 1px #419CF8;
+				outline: none;
+			}
+		}
+
+		.karma-inner-gizmo-template {
+			@include element_direction($top: 17px, $right: 17px);
+		}
+
+		.karma-outer-gizmo-template {
+			@include element_direction($top: -44px, $right: 0);
+			&.text-gizmo-group {
+				left: 0;
+				right: auto;
+			}
+		}
+
+		.karma-gizmo-template {
+			@include box( auto, 35px );
+			@include flexbox( center, center, flex-start );
+			@extend .karma-builder-shadow-box-2;
+			background-color: #fff;
+			border-radius: 2px;
+			display: none;
+			flex-direction:row-reverse;
+			padding: 0 7px;
+			position: absolute;
+			z-index: $level-20;
+			&:not(.section-gizmo-group){
+				left:0;
+				right: auto;
+			}
+			&.column-gizmo-group-responsive{
+				left:auto;
+				right: 0;
+			}
+
+			.karma-visibility-option{
+				@include box( 18px, 12px );
+				background-image: url(../media/svg/visibility.svg);
+				background-repeat: no-repeat;
+				background-size: contain;
+				cursor: pointer;
+				margin: 0 7px;
+
+				&.visibility-line{
+					@include box( 18px, 17px );
+					background-image: url(../media/svg/visible-line.svg);
+					background-size: contain;
+					cursor: pointer;
+					margin: 0 7px;
+				}
+			}
+
+			&.text-gizmo-group > div {
+
+				cursor: pointer;
+				position: relative;
+				white-space: nowrap;
+
+			}
+
+			.karma-drop-down-icon {
+				background-color: inherit;
+				background-image: none;
+				border: none;
+				box-shadow: none;
+				display: flex;
+				margin: 0;
+				min-width: initial;
+				outline: none;
+				padding: 11px 7px;
+				transition: 0.1s;
+				&:hover {
+					background-color: transparent;
+					svg {
+						* {
+							transition: 0.1s;
+							fill: $builder-main-color-1;
+						}
+					}
+				}
+				div {
+					@include box( 18px, 14px );
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: contain;
+				}
+				&.karma-multi-drop-down-gizmo{
+					&:hover{
+						svg{
+							*{
+								transition-duration: 0.1s;
+								fill: $builder-accent-color;
+							}
+						}
+					}
+
+				}
+
+			}
+			.karma-drop-down-box {
+				@extend .karma-builder-shadow-box-2;
+				background-color: #fff;
+				border-radius: 4px;
+				cursor: auto;
+				display: none;
+				flex-direction: column;
+				padding: 0 6px 6px 6px;
+				position: absolute;
+				top: 45px;
+
+				&:after {
+					@include box( 0, 0 );
+					border-bottom: 8px solid #fff;
+					border-left: 7px solid transparent;
+					border-right: 7px solid transparent;
+					content: '';
+					left: 28%;
+					position: absolute;
+					top: -6px;
+				}
+
+				button {
+					@include box( 30px, auto );
+					background-color: inherit;
+					border: none;
+					border-radius: 3px;
+					box-shadow: none;
+					height: auto;
+					line-height: 0;
+					margin-bottom: 0;
+					margin-top: 6px;
+					min-width: inherit;
+					outline: none;
+					padding: 8px;
+					&:hover {
+						background-color: $builder-accent-color-3;
+					}
+
+					&.karma-drop-down-active-item {
+						background-color: $builder-accent-color-3;
+					}
+
+					div {
+						@include box( 18px, 13px );
+						background-position: center;
+						background-repeat: no-repeat;
+						background-size: contain;
+					}
+
+				}
+
+				&.karma-gizmo-multi-drop-down-content{
+
+					.karma-active-multi-drop-down{
+						background-color: rgba(65,156,248,0.1);
+						color: $builder-accent-color;
+					}
+					left:11px;
+					padding-bottom: 0;
+					.karma-gizmo-multi-drop-down-content-box{
+
+						> div{
+							@include flexbox($align-item:center);
+							cursor: pointer;
+							flex-direction: row;
+							margin-bottom: 8px;
+							padding: 9px 16px 9px 9px;
+							transition-duration: .2s;
+							white-space: nowrap;
+
+							&:first-child{
+								margin-top: 7px;
+							}
+
+							&:hover{
+								background-color: rgba(65,156,248,0.1);
+								transition-duration: .2s;
+
+								.karma-gizmo-multi-drop-down-text{
+									color: $builder-accent-color;
+								}
+							}
+						}
+						.karma-gizmo-multi-drop-down-text{
+							@extend .karma-builder-title-3;
+							font-weight: 500;
+							padding-left: 15px;
+						}
+						.karma-gizmo-multi-drop-down-icon{
+							@include box(24px,18px);
+							background-position: center;
+							background-repeat: no-repeat;
+
+
+						}
+					}
+				}
+				&.open-drop-down-gizmo {
+					display: flex;
+
+					.karma-gizmo-position-content-box{
+						@include box( 72px, 75px );
+						display: flex;
+						flex-wrap: wrap;
+						justify-content: space-between;
+					}
+				}
+
+				&.karma-slider-and-drop-down {
+					justify-content: inherit;
+					left: -147px;
+					padding: 0 15px;
+					position: absolute;
+					width: 190px;
+					z-index: $level-10;
+					&:after{
+						left: 86%;
+					}
+
+					.karma-range-slider-number input {
+						border: none;
+						margin-bottom: 0;
+						margin-bottom: 0;
+						max-height: 30px;
+						max-width: 30px;
+					}
+					.karma-check-box-contain{
+
+						align-items: center;
+						display: flex;
+						flex-direction: row-reverse;
+						padding: 4px 0;
+						position: relative;
+						.karma-link-open-new-tab-text{
+							color: $builder-main-color;
+							font-size: 14px;
+							left: 0;
+							line-height: 28px;
+							position: absolute;
+						}
+					}
+					&.karma-range-slider-container {
+
+						.karma-range-slider-number {
+							@include box( 40px, 29px );
+							border: none;
+							margin: 0;
+							padding: 0;
+						}
+						.karma-input-number-type-unit{
+
+							padding: 0 0 0 2px;
+						}
+
+						.karma-range-slider-content {
+
+							border-bottom: 1px solid rgba( $builder-main-color, 0.1 );
+							margin-bottom: -3px;
+							margin-top: 12px;
+							padding: 0 0 7px 9px;
+						}
+						.karma-drop-down-radio{
+							padding: 10px 0;
+							text-align: left;
+							width: 100%;
+
+							.check-box-circle{
+								@include check-box-button;
+								@include box( 17px, 17px );
+
+								.karma-slider-and-drop-down-radio{
+									left: 0;
+									width: 187px;
+								}
+
+								input{
+									width: auto;
+								}
+							}
+							.check-box-circle label{
+								@include box( 7px, 7px );
+							}
+
+						}
+					}
+				}
+
+				&.karma-link-drop-down{
+					@include box( 190px, 83px );
+					left: 28px;
+					padding: 11px;
+					.karma-check-box-container {
+						@include check-box-button();
+						position: relative;
+
+						.check-box-circle{
+							@include flexbox( center, center, center );
+							@include box( 100%, 100% );
+						}
+					}
+					input.karma-text-link {
+						@include box( 168px, 28px );
+						@extend .karma-builder-title-4;
+						border-radius: 4px;
+						color: #000;
+						margin-bottom: 10px;
+					}
+
+					.karma-check-box-container{
+						@include box( 17px, 17px );
+						margin-right: 7px;
+					}
+
+					.karma-check-box-contain{
+						align-items: center;
+						display: flex;
+					}
+
+					label.check-box-circle-fill{
+						@include box( 7px, 7px );
+					}
+
+					.karma-link-open-new-tab-text{
+						color: $builder-main-color;
+						@extend .karma-builder-title-4;
+					}
+
+					&:after{
+						left:10%;
+					}
+				}
+
+			}
+
+			//position gizmo
+			.karma-gizmo-position-container{
+				align-items: center;
+				justify-content: center;
+				position: relative;
+
+				.karma-all-controller-title{
+					@extend .karma-builder-title-3;
+					color: $builder-main-color;
+					padding: $builder-red-space $builder-blue-space 7px;
+				}
+
+			}
+
+			.karma-gizmo-position-content{
+
+				.hidden-input{
+					display: none;
+				}
+
+				.karma-gizmo-position-box {
+					@include box( 22px,22px );
+					background-color: $builder-accent-color-3;
+					border-radius: 2px;
+					cursor: pointer;
+					display: flex;
+					margin-bottom: 3px;
+
+					&:hover{
+						background-color: $builder-accent-color-2;
+					}
+
+					&.karma-gizmo-position-top-left-dot{
+						align-items: flex-start;
+						justify-content: flex-start;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-top-right-dot{
+						align-items: flex-start;
+						justify-content: flex-end;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-top-center-dot{
+						align-items: flex-start;
+						justify-content: center;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-bottom-left-dot{
+						align-items: flex-end;
+						justify-content: flex-start;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-bottom-right-dot{
+						align-items: flex-end;
+						justify-content: flex-end;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-bottom-center-dot{
+						align-items: flex-end;
+						justify-content: center;
+						padding: 4px;
+					}
+					&.karma-gizmo-position-center-left-dot{
+						align-items:center;
+						justify-content: flex-start;
+						padding: 4px;
+						text-align: center;
+					}
+
+					&.karma-gizmo-position-center-right-dot{
+						align-items:center;
+						justify-content: flex-end;
+						padding: 4px;
+						text-align: center;
+					}
+
+					&.karma-gizmo-position-center-center-dot{
+						align-items:center;
+						justify-content: center;
+						text-align: center;
+					}
+
+					.karma-gizmo-position-dot{
+						@include box( 5px, 5px );
+						background-color: $builder-main-color-5;
+						border-radius: 19px;
+						opacity: 0.76;
+					}
+				}
+
+			}
+
+			.karma-gizmo-position-selected-item{
+				background-color: $builder-accent-color-1 !important;
+			}
+			
+			.karma-gizmo-position-content{
+				left: 21px;
+				padding: 7px 7px 5px 7px;
+			}
+			.karma-typography-drop-down {
+				flex-direction: column;
+				left: -12px;
+				padding: 0;
+
+				button {
+					box-shadow: none;
+					margin-left: 6px;
+					padding: 11px 7px;
+					width: 35px;
+				}
+
+				.karma-typography-drop-down-left {
+					padding-bottom: 6px;
+				}
+				.karma-typography-drop-down-right {
+					padding-right: 6px;
+				}
+
+				.karma-typography-drop-down-icons {
+					flex-direction: row-reverse;
+				}
+
+				.karma-typography-link {
+
+					border-top: 1px solid $builder-main-color-4;
+					font-family: $builder-normal-font;
+
+					a {
+						@extend .karma-builder-title-4;
+						border-bottom: none;
+						box-shadow: none;
+						color: $builder-accent-color;
+						font-family: $builder-medium-font;
+						padding: 5px 0;
+					}
+
+				}
+
+				div {
+					display: flex;
+					flex-direction: column;
+				}
+			}
+			.karma-position-drop-down-gizmo{
+				&:hover {
+					svg {
+						* {
+							transition-duration: 0.1s;
+							fill: $builder-accent-color;
+						}
+					}
+				}
+			}
+
+			.karma-builder-gizmo-icon {
+				@include flexbox( $align-item: center );
+				cursor: pointer;
+				height: 100%;
+				padding: 11px 7px;
+				transition-duration: 0.1s;
+				div {
+					display: flex;
+				}
+				&:hover {
+					svg {
+						* {
+							transition-duration: 0.1s;
+							fill: $builder-accent-color;
+						}
+					}
+				}
+			}
+
+			.karma-builder-gizmo-icon[data-form="animation-panel"] {
+				Cursor: no-drop
+			}
+
+			.karma-builder-gizmo-text {
+				@include flexbox( center, center, center );
+				@extend .karma-builder-title-4;
+				border-right: 1px solid $builder-main-color-3;
+				color: $builder-main-color;
+				cursor: pointer;
+				font-family: $builder-medium-font;
+				height: 18px;
+				margin-right: 7px;
+				padding: 0 12px 0 5px;
+				transition: all 0.3s ease;
+				white-space: nowrap;
+				/* Non-prefixed version, currently supported by Chrome and Opera */
+				-webkit-touch-callout: none; /* iOS Safari */
+				-webkit-user-select: none; /* Safari */
+				-khtml-user-select: none; /* Konqueror HTML */
+				-moz-user-select: none; /* Firefox */
+				-ms-user-select: none; /* Internet Explorer/Edge */
+				user-select: none;
+
+			}
+
+			.karma-builder-gizmo-text:hover {
+				color: $builder-accent-color;
+				transition: all 0.3s ease;
+			}
+			.karma-builder-gizmo-alignmentGizmo {
+				position: relative;
+
+			}
+
+			div[ data-form = "more-panel" ]:not( .karma-more-setting ):not( .karma-more-submenu ) {
+
+				@include box(0);
+				overflow: hidden;
+				padding: 0;
+				svg {
+					display: none;
+				}
+
+			}
+
+		}
+
+
+		.karma-spacing-dot-container {
+
+			@include box( 22px, 23px );
+			cursor: ns-resize;
+			display: none;
+			left: 48%;
+			position: absolute;
+			top: -12px;
+
+			&:hover .spacing-dot-hover {
+				@include box( 22px, 22px );
+				transition: width 250ms cubic-bezier(0.23, 1, 0.32, 1), height 250ms cubic-bezier(0.23, 1, 0.32, 1);
+			}
+
+			.spacing-dot-hover {
+				@include box(0, 0);
+				background-color: rgba( $builder-accent-color, .3 );
+				border-radius: 100%;
+				transition: width 250ms cubic-bezier(0.23, 1, 0.32, 1), height 250ms cubic-bezier(0.23, 1, 0.32, 1);
+			}
+
+			.karma-row {
+				box-shadow: inset 0 0 0 1px rgba( $builder-main-color-4, 0.7 );
+			}
+
+			.spacing-dot {
+				@extend .dot-gizmo;
+				@include center( 'both' );
+			}
+
+			.spacing-top-hover {
+				@include element_direction( $top: 0, $left: 0 );
+				@include box( 22px, 14px );
+				display: block;
+				margin-top: 10px;
+				overflow: hidden;
+				position: relative;
+
+				.spacing-dot-hover {
+					@include center( 'both' );
+					top: 3px;
+				}
+			}
+
+			.spacing-bottom-hover {
+				@include element_direction($top: 0, $left: 0);
+				@include box( 22px, 11px );
+				display: block;
+				margin-bottom: 10px;
+				overflow: hidden;
+				position: relative;
+
+				.spacing-dot-hover {
+					@include center('both');
+					top: 12px;
+				}
+			}
+
+			.spacing-left-hover {
+				@include element_direction( $top: 0, $left: 0 );
+				@include box( 14px, 24px );
+				display: block;
+				overflow: hidden;
+				position: relative;
+
+				.spacing-dot-hover {
+					@include center( 'vertical' );
+					left: -10px;
+				}
+			}
+
+			.resize-handler:before {
+				@include center( 'horizontal' );
+				@include box( 1px, 100% );
+				background-color: rgba($builder-main-color-4, 0.8);
+				content: " ";
+				cursor: col-resize;
+				top: 0;
+				transition: background-color .3s, width .2s;
+			}
+
+			.spacing-right-hover {
+				@include box( 14px, 24px );
+				@include element_direction( $top: 0, $left: -3px );
+				display: block;
+				margin-right: 0;
+				overflow: hidden;
+				position: relative;
+
+				.spacing-dot-hover {
+
+					@include center( 'vertical' );
+					right: -10px;
+
+				}
+			}
+
+		}
+		.karma-element-content {
+			.karma-spacing-dot-container {
+				.spacing-dot-hover {
+					height: 22px;
+					transform: scale(0);
+					transition: width 0ms, height 0ms, transform 200ms;
+					width: 22px;
+				}
+
+				&:hover {
+					.spacing-dot-hover {
+						height: 22px;
+						transform: scale(1);
+						transform-origin: center center;
+						transition: width 0ms, height 0ms, transform 200ms;
+						width: 22px;
+
+					}
+
+				}
+				.spacing-dot {
+					@include box( 6px, 6px );
+					background-color: $builder-accent-color;
+				}
+			}
+		}
+
+		.row-bottom-spacing-dot-container {
+			align-items: center;
+			bottom: -9px;
+			cursor: ns-resize;
+			display: none;
+			height: 18px;
+			justify-content: center;
+			left: 48%;
+			position: absolute;
+			width: 18px;
+
+			&:hover .spacing-bottom-dot-hover {
+				display: block;
+			}
+
+			.spacing-bottom-dot-hover {
+				align-items: center;
+				background-color: $builder-accent-color-3;
+				border-radius: 100%;
+				display: none;
+				height: 18px;
+				justify-content: center;
+				width: 18px;
+
+			}
+			.spacing-bottom-dot {
+				background-color: #fff;
+				border: 1px solid $builder-accent-color;
+				border-radius: 100%;
+				box-sizing: border-box;
+				height: 8px;
+				position: absolute;
+				width: 8px;
+
+			}
+		}
+
+		.section-gizmo-group {
+			display: none;
+		}
+
+		&.karma-active-section {
+
+			.karma-row {
+				box-shadow: inset 0 0 0 1px rgba( $builder-main-color-4, 0.6 );
+				z-index: 1;
+
+				> .karma-builder-element:last-child {
+					.resize-handler {
+						display: none;
+					}
+
+					.karma-right-spacing .karma-spacing-dot-container {
+						left: calc( 100% - 11px ) !important;
+						.spacing-dot {
+							border-radius: 100%;
+							left: 13px;
+						}
+					}
+				}
+
+				> .karma-builder-element:nth-of-type( 1 ) {
+					.karma-left-spacing .karma-spacing-dot-container {
+						left: 1px !important;
+						.spacing-dot {
+							border-radius: 100%;
+							left: 1px;
+						}
+					}
+				}
+
+				.resize-handler {
+					@include box( 12px, 100% );
+					cursor: col-resize;
+					position: absolute;
+					right: -5px;
+					top: 0;
+					z-index: $level-15;
+				}
+
+				.resize-handler:before {
+					@include center( 'horizontal' );
+					@include box( 1px, 100% );
+					background-color: rgba( $builder-main-color-4,  0.6 );
+					content: " ";
+					cursor: col-resize;
+					top: 0;
+					transition: background-color .3s, width .2s;
+				}
+
+				.resize-handler:hover:before {
+					background-color: $builder-accent-color-3;
+					width: 4px;
+				}
+
+				.resize-dragging {
+
+					.resize-handler:before {
+						background-color: $builder-accent-color-3;
+						width: 4px;
+					}
+
+				}
+			}
+
+			&.karma-resizable-active {
+				.karma-top-spacing {
+					.spacing-dot {
+						background-color: $builder-accent-color;
+					}
+				}
+			}
+
+			.section-both-spacing {
+				.karma-both-spacing-handler{
+					@include box( 100%, 15px );
+					cursor: ns-resize;
+
+					&.karma-both-spacing-handler-bottom{
+						bottom: 0;
+						position: absolute;
+
+					}
+				}
+				.karma-bottom-spacing {
+					
+					&.ui-resizable-resizing {
+						.spacing-dot {
+							background-color: $builder-accent-color;
+						}
+					}
+				}
+			}
+
+		}
+
+		&.karma-active-column {
+
+			> .karma-gizmo-template:not(.column-gizmo-group-responsive) {
+				display: flex;
+				&.karma-outer-gizmo-template {
+
+					&.karma-gizmo-container {
+						left: 0;
+						right: auto;
+					}
+				}
+			}
+
+			.column-gizmo-group{
+				background-color: $builder-main-color-2;
+				cursor: pointer;
+				display: block;
+				line-height: 16px;
+				padding: 0 7px 0 5px;
+				position: absolute;
+				right: 0;
+				top: -16px;
+				z-index: $level-10;
+
+				.column-setting {
+					align-items: center;
+					display: flex;
+				}
+
+				.karama-gizmo-icon {
+					@include flexbox(center, center, center);
+					svg {
+						@include box(10.31px, 10.31px);
+						* {
+							fill: #fff;
+						}
+					}
+				}
+
+				.karma-gizmo-title {
+					color: #fff;
+					font-family: $builder-normal-font;
+					font-size: 10px;
+					padding-left: 2.69px;
+					vertical-align: top;
+				}
+			}
+
+		}
+
+		.karma-right-spacing.ui-resizable-resizing {
+			div.spacing-dot {
+				background-color: $builder-accent-color;
+			}
+			&:after {
+				background-color: rgba($builder-accent-color, 0.3);
+				box-shadow: inset 0 0 0 1px $builder-accent-color-3;
+				content: "";
+				height: 100%;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: calc(100% - 2px);
+			}
+		}
+
+		.karma-left-spacing.ui-resizable-resizing {
+			div.spacing-dot {
+				background-color: $builder-accent-color;
+			}
+			&:after {
+				background-color: rgba($builder-accent-color, 0.3);
+				box-shadow: inset 0 0 0 1px $builder-accent-color-3;
+				content: "";
+				height: 100%;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: calc(100% - 2px);
+			}
+		}
+		.karma-right-spacing {
+			.karma-spacing-dot-container {
+				width: 11px;
+				z-index: $level-15;
+				.spacing-dot {
+					background-color: #fff;
+					border: 1px solid $builder-accent-color;
+					border-bottom-left-radius: 90px;
+					border-top-left-radius: 90px;
+					box-sizing: border-box;
+					height: 8px;
+					left: 14px;
+					position: absolute;
+					right: 11px;
+					width: 8px;
+					z-index: 90;
+				}
+			}
+		}
+		.karma-left-spacing {
+			.karma-spacing-dot-container {
+				width: 11px;
+				z-index: $level-15;
+				.spacing-dot {
+					background-color: #fff;
+					border: 1px solid $builder-accent-color;
+					border-bottom-right-radius: 90px;
+					border-top-right-radius: 90px;
+					box-sizing: border-box;
+					height: 8px;
+					left: 0;
+					position: absolute;
+					right: 11px;
+					width: 8px;
+					z-index: 90;
+				}
+			}
+		}
+
+		.karma-bottom-spacing .karma-spacing-dot-container,
+		.karma-top-spacing .karma-spacing-dot-container {
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: $level-5;
+		}
+
+	}
+}
+
+div.karma-element-content {
+
+	.karma-top-spacing {
+		bottom: 100% !important;
+		//important for image shortcode
+		position: absolute;
+		top: auto;
+		visibility: hidden;
+		width: 100%;
+		z-index: -1;
+
+		&.ui-resizable-resizing {
+			background-color: rgba($builder-accent-color, 0.3);
+			border-bottom: 1px solid $builder-accent-color;
+			cursor: ew-resize;
+		}
+
+		.karma-spacing-dot-container {
+			position: absolute;
+			top: calc(100% - 11.5px);
+		}
+	}
+}
+
+

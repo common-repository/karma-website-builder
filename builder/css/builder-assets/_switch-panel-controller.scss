@@ -1,0 +1,42 @@
+#karma-element-setting-panel-container {
+	.karma-switch-panel-container {
+
+		@include flexbox($justify-content: center);
+		background-color: $builder-main-color-5;
+		border-radius: 0 0 7px 7px;
+		border-top: 1px solid $builder-main-color-3;
+
+		#new-form-builder-panel {
+			@include element_direction($top: 0, $left: 360px);
+			@include box(100%, inherit);
+			position: absolute;
+		}
+
+		.karma-switch-panel-button {
+			@include oval-button-with-icon();
+			margin: $builder-orange-space 0;
+			text-transform: capitalize;
+
+			p {
+				@extend .karma-builder-title-3;
+				color: #000;
+				margin: 0;
+			}
+
+			.karma-switch-panel-shape {
+				@include box(8px, 8px);
+				border-bottom: 1px solid $builder-main-color-1;
+				border-left: 1px solid $builder-main-color-1;
+				margin-right: 9px;
+				transform: rotate(45deg);
+				transition-duration: .3s;
+			}
+
+			&.karma-switch-panel-button{
+				svg *{
+					stroke: $builder-main-color;
+				}
+			}
+		}
+	}
+}

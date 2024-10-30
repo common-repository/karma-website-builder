@@ -1,0 +1,24 @@
+.karma-check-box-controller{
+	padding:20px;
+	position: relative;
+
+	.check-box-controller-template{
+		@include flexbox( $align-item:center, $justify-content:space-between );
+		flex-direction: row;
+
+		.karma-check-box-title{
+			@extend .karma-builder-title-3;
+			color: $builder-main-color;
+		}
+		.karma-check-box-container{
+
+			position: relative;
+
+			.check-box-circle{
+	     		@include check-box-button();
+			}
+		}
+	}
+}
+
+

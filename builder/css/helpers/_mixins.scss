@@ -1,0 +1,700 @@
+/**
+ * Media queries
+ * @group helpers
+ * @param {String} $size - kind of size such as: small
+ * @param {string} $type - Max or Min for width
+ * @param {Number} $pixels - when use custom use this pixels
+ * @require $breakpoint-small , $breakpoint-med-small , $breakpoint-med
+ * @output media query for responsive
+ */
+
+@mixin screen($size, $type: max, $pixels: $breakpoint-small) {
+	@if $size == 'small' {
+		@media screen and ($type + -width: $breakpoint-small) {
+			@content;
+		}
+	} @else if $size == 'med-small' {
+		@media screen and ($type + -width: $breakpoint-med-small) {
+			@content;
+		}
+	} @else if $size == 'med' {
+		@media screen and ($type + -width: $breakpoint-med) {
+			@content;
+		}
+	} @else if $size == 'large' {
+		@media screen and ($type + -width: $breakpoint-med) {
+			@content;
+		}
+	} @else if $size == 'custom' {
+		@media screen and ($type + -width: $pixels + px) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+/**
+ * Centering elements
+ * @group helpers
+ * @param {String} $position - kind of center alignment such as: vertical
+ * @output top left and transform of element
+ */
+
+@mixin center($position) {
+	position: absolute;
+
+	@if $position == 'vertical' {
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+	} @else if $position == 'horizontal' {
+		left: 50%;
+		-webkit-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		transform: translate(-50%);
+	} @else if $position == 'both' {
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+	}
+}
+
+/**
+ * External fonts
+ * @group helpers
+ * @param {String} $font-name - name of font
+ * @param {string} $file-name - url of font sorce
+ * @param {Number} $weight - weight of font
+ * @param {string}  $style - style of font
+ * @output read font and give it font-weight and font-style
+ */
+@mixin font-face($font-name, $file-name, $weight: normal, $style: normal) {
+	@font-face {
+		font-family: $font-name;
+		src: url($file-name) ;
+
+		font-weight: $weight;
+		font-style: $style;
+	}
+}
+
+/**
+ * Adding dimensions
+ * @group helpers
+ * @param {Number} $width - width of box(element) 
+ * @param {Number}  $height - height of box
+ * @output give width and height 
+ */
+@mixin box( $width, $height:$width ) {
+	width: $width;
+	height: $height;
+}
+
+@mixin karma-box( $width, $height:$width ) {
+	@include box( $width, $height );
+	background-color:#fff;
+	border-radius: 3px;
+	box-shadow: 0 2px 15px 7px rgba( $builder-main-color, 0.07);
+}
+
+@mixin flex-position ( $horizontal, $vertical ){
+
+	display: flex;
+	@if ( 'center' == $horizontal ){
+
+		justify-content: center;
+
+	}
+	@if( 'left' == $horizontal ){
+
+		justify-content: flex-start;
+
+	}
+	@if( 'right' == $horizontal ){
+
+		justify-content: flex-end;
+
+	}
+
+	@if ( 'center' == $vertical ){
+
+		align-items: center;
+
+	}
+	@if( 'left' == $vertical ){
+
+		align-items: flex-start;
+
+	}
+	@if( 'right' == $vertical ){
+
+		align-items: flex-end;
+		
+	}
+
+}
+
+
+/**
+ * Element Direction mixin
+ * @group helpers
+ * @param {Number} $top - set Element Direction top
+ * @param {Number} $right - set Element Direction right
+ * @param {Number} $bottom - set Element Direction bottom
+ * @param {Number} $left - set Element Direction left
+ * @output all side margin
+ */
+
+@mixin element_direction($top:auto, $right:auto, $bottom:auto, $left:auto) {
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+/**
+ * Centering a block
+ * @group helpers
+ * @output with display block and margin center element
+ */
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/**
+ * flexbox
+ * @group helpers
+ * @output with display flex and  center element
+ */
+@mixin flexbox( $text-align:inherit, $align-item:inherit, $justify-content:inherit ) {
+	@include justify-align( $align-item, $justify-content );
+	display: flex;
+	text-align: $text-align;
+}
+
+/**
+ * Unselectable
+ * @group helpers
+ * @output make unselectable element
+ */
+@mixin unselectable() {
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+
+/**
+ * check justify content and align item (use for image position)
+ * @group helpers
+ * @output justify content and align item
+ */
+@mixin justify-align( $align-item:inherit, $justify-content:inherit ){
+	align-items: $align-item;
+	justify-content: $justify-content;
+}
+
+/**
+ * Remove the unit of a length
+ * @group helpers
+ * @output responsive text
+ */
+@function strip-unit( $value ) {
+
+	@return $value / ( $value * 0 + 1 );
+
+}
+
+/**
+ * text responsive to change font size
+ * @group helpers
+ * @output responsive text
+ */
+@mixin fluid-type( $min-vw, $max-vw, $min-font-size, $max-font-size ) {
+
+	$u1: unit( $min-vw );
+	$u2: unit( $max-vw );
+	$u3: unit( $min-font-size );
+	$u4: unit( $max-font-size );
+
+	@if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+		& {
+
+			font-size: $min-font-size;
+			@media screen and ( min-width: $min-vw ) {
+				font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+			}
+			@media screen and (min-width: $max-vw) {
+				font-size: $max-font-size;
+			}
+		}
+	}
+
+}
+
+/**
+ * mixin for border button
+ * @group helpers
+ * @output border button
+ */
+@mixin border-button ( $color:$builder-accent-color, $background-color:inherit, $border:$builder-accent-color ) {
+
+	@include flexbox( center );
+	@include box-color( $color, $background-color, 2px );
+	@extend .karma-builder-title-3;
+	@extend .karma-button-padding;
+	border: 1px solid $border;
+	cursor: pointer;
+	height:40px;
+	transition-duration: .2s;
+
+	&:focus {
+		transition-duration: .2s;
+	}
+
+	&:hover {
+		transition-duration: .2s ;
+		transform: translateY(-2px);
+		box-shadow: 0 10px 15px 0 rgba(57,73,89,0.2);
+	}
+
+	&:active {
+	}
+
+}
+
+/**
+ * mixin for border button
+ * @group helpers
+ * @output border button
+ */
+@mixin fill-button ( $color:#fff, $background-color:$builder-accent-color ) {
+
+	@include flexbox( center, center, center );
+	@include box-color( $color, $background-color, 2px );
+	@extend .karma-builder-title-3;
+	@extend .karma-button-padding;
+	border: none;
+	cursor: pointer;
+	height:40px;
+	transition-duration: .2s;
+
+	&:focus {
+		transition-duration: .2s;
+	}
+
+	&:hover {
+		transition-duration: .2s ;
+		transform: translateY(-2px);
+		box-shadow: 0 10px 15px 0 rgba(57,73,89,0.2);
+	}
+
+	&:active {
+	}
+
+}
+
+/**
+ * mixin for oval button
+ * @group helpers
+ * @output oval button
+ */
+@mixin oval-button($color:$builder-main-color, $background-color:rgba(255, 255, 255, 0.7)) {
+
+	@include flexbox( center, center, center );
+	@include box-color( $color, $background-color, 100px );
+	@extend .karma-builder-title-3;
+	@extend .karma-button-padding;
+	height:36px;
+	cursor: pointer;
+
+	&:focus {
+	}
+
+	&:hover {
+	}
+
+	&:active {
+	}
+
+}
+
+/**
+ * mixin for oval with icon button
+ * @group helpers
+ * @output oval with icon button
+ */
+@mixin oval-button-with-icon ($color:$builder-main-color, $background-color:#fff, $border:$builder-main-color-3) {
+
+	@include flexbox( center,center,center );
+	@include box-color( $color, $background-color, 100px );
+	@extend .karma-builder-title-3;
+	border: 1px solid $border;
+	cursor: pointer;
+	height:36px;
+	padding: 0 20px 0 20px;
+
+	&:focus {
+	}
+
+	&:hover {
+	}
+
+	&:active {
+	}
+
+	.karma-oval-button-icon{
+		margin-right: 10px;
+	}
+
+}
+
+/**
+ * mixin for input number type
+ * @group helpers
+ * @output input number type
+ */
+@mixin input-number-type {
+
+	@include box( 57px , 32px );
+	border: 1px solid $builder-main-color-3;
+	border-radius: 40px;
+	display: inline-flex;
+	justify-content: center;
+	margin-left: 13px;
+	padding: 0 14px;
+	color: $builder-main-color;
+
+	input{
+		@include flexbox( $text-align: right );
+		@extend .karma-builder-title-4;
+		border:none;
+		color: #000;
+		background: transparent;
+		padding: 0;
+		&:focus {
+			border-color: $builder-main-color-4;
+			outline: none;
+		}
+	}
+
+	label{
+		@extend .karma-builder-title-3;
+		font-weight: 400;
+		line-height: 28px;
+		margin-bottom: 0;
+	}
+
+	&:focus {
+	}
+
+	&:hover {
+	}
+
+	&:active {
+	}
+}
+
+/**
+ * mixin for input number type
+ * @group helpers
+ * @output input number type
+ */
+@mixin input-text-type {
+	@extend .karma-builder-title-4;
+	@include box( 245px, 36px );
+	padding: 7px 14px;
+	background: transparent;
+	border: 1px solid $builder-main-color-3;
+	border-radius: 4px;
+	box-sizing: border-box;
+  	box-shadow: none;
+	color: $builder-main-color-1;
+
+	&::placeholder {
+		@extend .karma-builder-title-4;
+		color: rgba( $builder-main-color, 0.6 );
+		font-family: $builder-normal-font;
+
+	}
+
+	&:focus {
+	}
+
+	&:hover {
+	}
+
+	&:active {
+	}
+}
+
+/**
+ * mixin for dropDown button
+ * @group helpers
+ * @output dropDown button
+ */
+@mixin dropdown-button {
+
+	@extend .center-both-flex;
+	@include box( 32px );
+	border-radius: 100px;
+	border: 1px solid $builder-main-color-3;
+
+    span{
+		margin-top: -1px;
+	}
+}
+
+/**
+ * mixin for radio button
+ * @group helpers
+ * @output radio button
+ */
+@mixin check-box-button {
+
+	@include flexbox( $align-item:center, $justify-content:center );
+	@include  box( 24px );
+	border: 1px solid $builder-main-color-3;
+	border-radius: 100px;
+
+	label{
+		@include  box( 10px );
+		background-color: $builder-accent-color;
+		border-radius: 100px;
+		transform: scale( 0.01 , 0.01 );
+		transition-duration: .3s;
+	}
+
+	input{
+		cursor: pointer;
+		opacity: 0;
+		position: absolute;
+		width: 100%;
+		z-index: $level-20;
+	}
+
+	input:checked + label {
+		transform: scale(1, 1);
+		transition-duration: .3s;
+	}
+}
+
+/**
+ * mixin for box color and border radius
+ * @group helpers
+ * @output box color
+ */
+@mixin box-color( $color, $background-color, $border-radius ) {
+
+	color: $color;
+	background-color: $background-color;
+	border-radius: $border-radius;
+
+}
+
+@mixin delete-message-box( $width, $height ){
+	@include element_direction( $top:0, $left:0 );
+	@include box( 100vw, 100vh );
+	@include flexbox( center, center, center );
+	animation: load_delete_overlay .7s ;
+	background-color: rgba(#000 , 0.3);
+	position: fixed;
+	z-index: $level-30;
+	&.karma-delete-box-animation{
+		animation: close_delete_overlay .7s ;
+	}
+
+	.karma-delete-message-container{
+		@include box( $width, $height );
+		@extend .karma-builder-shadow-box-3;
+		@include flexbox( left, normal , center );
+		@extend .karma-builder-title-2;
+		animation: load_delete_box 10ms cubic-bezier( 0.165, 0.84, 0.44, 1 ) forwards;
+		border-radius: 4px;
+		background-color: #fff;
+		color: $builder-main-color;
+		opacity: 0;
+		padding: 21px 33px 30px 30px;
+		transform: scale(.6);
+		z-index: $level-25;
+
+		&.karma-delete-container-animation{
+			animation: close_delete_box 150ms cubic-bezier( 0.165, 0.84, 0.44, 1 ) forwards;
+		}
+
+		.karma-delete-message-box-buttons{
+
+			@include flexbox( center, center, flex-end );
+			padding:43px 0 0 31px;
+
+			.karma-delete-message-box-delete-button{
+				@include fill-button( #fff, #FF243F );
+			}
+
+			.karma-delete-message-box-cancel-button{
+				@extend .karma-builder-title-3;
+				color: $builder-main-color;
+				cursor: pointer;
+				padding-right: 19px;
+				transition-duration: .3s ;
+
+				&:hover{
+					color:$builder-main-color-2;
+					transition-duration: .3s ;
+				}
+			}
+		}
+	}
+}
+
+@keyframes load_delete_overlay {
+	00% {
+		opacity:0;
+		visibility: hidden;
+		background-color: transparent;
+	}
+	100% {
+		opacity: 1;
+		visibility: visible;
+		background-color: rgba( #000 , 0.3 );
+	}
+}
+
+@keyframes close_delete_overlay {
+	00% {
+		background-color: rgba( #000 , 0.3 );
+	}
+	100% {
+		background-color: transparent;
+	}
+}
+
+@keyframes load_delete_box {
+	0% {
+		opacity: 0;
+		transform: scale(.6);
+	}
+	25% {
+		opacity: .3;
+		transform: scale(.7);
+	}
+	50% {
+		opacity: .6;
+		transform: scale(.8);
+	}
+	75% {
+		opacity: .8;
+		transform: scale(.9);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+
+	}
+}
+
+@keyframes close_delete_box {
+	00% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	25% {
+		opacity: .8;
+		transform: scale(1);
+	}
+	50% {
+		opacity: .6;
+		transform: scale(.9);
+	}
+	75% {
+		opacity: .3;
+		transform: scale(.8);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(.7);
+
+	}
+}
+
+/**
+ * mixin for publish button
+ * @group helpers
+ * @output publish button
+ */
+@mixin publish-buttons() {
+
+	backface-visibility: hidden;
+	background: linear-gradient(to right, #A0CDFB 50%, #ECF5FE 50%);
+	background-position: right bottom;
+	background-size: 200% 100%;
+	border-radius: 3px;
+	color: #419CF8;
+	font-size: 14px;
+	height: 32px;
+	overflow: hidden;
+	padding: 0 19px;
+	transition: all .5s ease-out;
+	transition-duration: .3s;
+	width: 82px;
+
+
+	&:before{
+		background-color: rgba( $builder-accent-color-2, .6 );
+		border-radius: 3px 0 0 3px;
+		bottom: 0;
+		content: '';
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		transform: translateX(-100%);
+		-webkit-transform: translateX(-100%);
+	}
+	div{
+		transition: opacity 0.3s;
+		z-index: 10;
+
+	}
+
+	&.karma-publish-animation{
+
+		&:before{
+			transform: translateX(-10%);
+			-webkit-transform: translateX(-10%);
+			transition: 1.5s ease-in-out;
+		}
+	}
+
+	&.karma-publish-finish-animation{
+
+		&:before{
+			animation: publish-remove-opacity 300ms cubic-bezier( 0.165, 0.84, 0.44, 1 )  forwards  320ms;
+			transform: translateX(0);
+			-webkit-transform: translateX(0);
+			transition: 0.5s ease-in-out;
+		}
+		&:after{
+			animation: publish-animation 2000ms cubic-bezier( 0.165, 0.84, 0.44, 1 )  forwards  500ms ;
+			background: url(../../builder/media/svg/publish-tik.svg) no-repeat center center transparent;
+			content: '';
+			height: 38px;
+			left: 32px;
+			opacity: 0;
+			position: absolute;
+			top: -4px;
+			width: 22px;
+			z-index: 1;
+
+		}
+
+	}
+}

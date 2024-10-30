@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>c116</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0.0577278034" y="-0.0577278034" width="39.3373746" height="39.4528302" rx="4"></rect>
+        <linearGradient x1="44.6039813%" y1="37.5756026%" x2="75.4321919%" y2="91.0404624%" id="linearGradient-3">
+            <stop stop-color="#63B514" offset="0%"></stop>
+            <stop stop-color="#70BD25" stop-opacity="0.737806228" offset="28.4448519%"></stop>
+            <stop stop-color="#8FD14F" stop-opacity="0.0782382246" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="c162" transform="translate(-3.000000, -3.000000)">
+            <g id="c116" transform="translate(3.000000, 3.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="c108" fill="#8FD14F" transform="translate(19.726415, 19.668687) rotate(90.000000) translate(-19.726415, -19.668687) " xlink:href="#path-1"></use>
+                <g id="c110" mask="url(#mask-2)" fill="url(#linearGradient-3)">
+                    <g transform="translate(15.000000, 11.000000)" id="c109">
+                        <polygon points="28 21.0419922 18.9353027 32.5244141 0.987792969 16.1022949 8.94482422 0.905761719"></polygon>
+                    </g>
+                </g>
+                <polyline id="c111" stroke="#CDFF9D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="36 18 37.5436782 19.567752 36 21.135504"></polyline>
+                <rect id="c112" fill="#FFFFFF" mask="url(#mask-2)" x="8" y="14" width="6" height="11"></rect>
+                <rect id="c113" fill="#FFFFFF" mask="url(#mask-2)" x="16" y="12" width="8" height="15.2676411"></rect>
+                <rect id="c114" fill="#FFFFFF" mask="url(#mask-2)" x="26" y="14" width="6" height="11"></rect>
+                <polyline id="c115" stroke="#CDFF9D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" transform="translate(3.771839, 19.567752) scale(-1, 1) translate(-3.771839, -19.567752) " points="3 18 4.5436782 19.567752 3 21.135504"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,100 @@
+.karma-image-position-container{
+	align-items: center;
+	justify-content: center;
+	position: relative;
+
+	.karma-all-controller-title{
+		@extend .karma-builder-title-3;
+		color: $builder-main-color;
+		padding: $builder-red-space $builder-blue-space 7px;
+	}
+
+}
+
+.karma-image-position-content{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin: 0 auto;
+	padding-bottom: 20px;
+	width:75px;
+
+	.hidden-input{
+		display: none;
+	}
+
+	.karma-image-position-box {
+		@include box( 22px,22px );
+		background-color: $builder-accent-color-3;
+		border-radius: 2px;
+		cursor: pointer;
+		display: flex;
+		margin-bottom: 3px;
+
+		&:hover{
+			background-color: $builder-accent-color-2;
+		}
+
+		&.karma-image-position-top-left-dot{
+			align-items: flex-start;
+			justify-content: flex-start;
+			padding: 4px;
+		}
+		&.karma-image-position-top-right-dot{
+			align-items: flex-start;
+			justify-content: flex-end;
+			padding: 4px;
+		}
+		&.karma-image-position-top-center-dot{
+			align-items: flex-start;
+			justify-content: center;
+			padding: 4px;
+		}
+		&.karma-image-position-bottom-left-dot{
+			align-items: flex-end;
+			justify-content: flex-start;
+			padding: 4px;
+		}
+		&.karma-image-position-bottom-right-dot{
+			align-items: flex-end;
+			justify-content: flex-end;
+			padding: 4px;
+		}
+		&.karma-image-position-bottom-center-dot{
+			align-items: flex-end;
+			justify-content: center;
+			padding: 4px;
+		}
+		&.karma-image-position-center-left-dot{
+			align-items:center;
+			justify-content: flex-start;
+			padding: 4px;
+			text-align: center;
+		}
+
+		&.karma-image-position-center-right-dot{
+			align-items:center;
+			justify-content: flex-end;
+			padding: 4px;
+			text-align: center;
+		}
+
+		&.karma-image-position-center-dot{
+			align-items:center;
+			justify-content: center;
+			text-align: center;
+		}
+
+		.karma-image-position-dot{
+			@include box( 5px, 5px );
+			background-color: $builder-main-color-5;
+			border-radius: 19px;
+			opacity: 0.76;
+		}
+	}
+
+}
+
+.karma-image-position-selected-item{
+	background-color: $builder-accent-color-1 !important;
+}

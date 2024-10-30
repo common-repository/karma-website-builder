@@ -1,0 +1,62 @@
+/* _-_-_- modules/DROPDOWN -_-_-_ */
+.karma-dropdown-controller{
+
+	@extend .karma-builder-title-3;
+	padding: 0 20px;
+
+	.karma-dropdown-label{
+
+		color: $builder-main-color;
+		margin-top: $builder-red-space;
+
+	}
+	.karma-dropdown-body{
+
+
+		cursor: pointer;
+		margin-bottom: $builder-orange-space;
+		margin-top: $builder-light-orange-space;
+		position: relative;
+
+		.karma-dropdown-header{
+
+			@extend .space-between;
+			align-items: center;
+
+			.karma-dropdown-icon{
+
+				@include dropdown-button;
+
+			}
+		}
+
+		.karma-dropdown-options{
+
+			@include box( 250px, 0 );
+			background-color: #fff;
+			box-shadow: 0 2px 12px 0 rgba($builder-main-color , 0.20);
+			display: none;
+			flex-direction: column;
+			left: 0;
+			list-style: none;
+			overflow: hidden;
+			padding: 7px;
+			position: fixed;
+			top: 36px;
+			z-index: $level-minus-5;
+
+			&.karma-doropdown-opened{
+			  	display: flex;
+				height: auto;
+				z-index: $level-20;
+			}
+
+		}
+
+	}
+
+	.karma-dropdown-option{
+		@extend .karma-dropdown-option;
+	}
+}
+

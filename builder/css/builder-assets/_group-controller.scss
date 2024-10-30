@@ -1,0 +1,59 @@
+.karma-setting-panel-group-container {
+	.karma-controller:nth-of-type(1) {
+		padding-top: 6px;
+	}
+
+	background-color: $builder-main-color-5;
+	border-top: 1px solid $builder-main-color-3;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+
+	button.karma-setting-panel-group-button {
+		@include flexbox($text-align: center, $align-item: center, $justify-content: space-between);
+		background-color: $builder-main-color-5;
+		border: none;
+		border-top: 1px solid $builder-main-color-5;
+		color: $builder-main-color;
+		cursor: pointer;
+		font-size: 15px;
+		outline: none;
+		padding: 20px;
+		transition: 0.4s;
+		width: 100%;
+
+		&.karma-group-border-radius {
+			border-radius: 0 !important;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		.karma-group-button-shape {
+			transform: rotate(0);
+			transition-duration: .3s;
+
+			&.karma-group-button-shape-rotate {
+				transform: rotate(-180deg) ;
+				transition-duration: .3s;
+			}
+		}
+	}
+
+	div.karma-group-panel {
+		background-color: $builder-main-color-5;
+		border-radius: 0 0 7px 7px;
+		display: none;
+		overflow: hidden;
+		padding-bottom: 10px;
+	}
+
+
+
+	button.karma-setting-panel-group-button p {
+		@extend .karma-builder-title-3;
+		color: $builder-main-color;
+		text-transform: capitalize;
+	}
+}

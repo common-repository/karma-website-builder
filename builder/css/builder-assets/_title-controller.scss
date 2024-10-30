@@ -1,0 +1,26 @@
+
+#karma-element-setting-panel-container .karma-title-with-background-controller {
+
+	background-color:$builder-accent-color-4;
+	padding: $builder-blue-space;
+	width: 100%;
+
+	div.karma-title-with-background-field {
+
+		@extend .karma-builder-title-3;
+		color: $builder-accent-color;
+		font-family: $builder-medium-font;
+
+	}
+}
+
+.karma-title-controller {
+	padding: $builder-red-space 20px $builder-orange-space;
+	position: relative;
+	width: 100%;
+
+	div.karma-title-field {
+		@extend .karma-builder-title-3;
+		color: $builder-main-color;
+	}
+}

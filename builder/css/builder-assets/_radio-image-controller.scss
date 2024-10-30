@@ -1,0 +1,74 @@
+.karma-radio-image-controller {
+	padding: 0 20px;
+	position: relative;
+
+	.radio-image-controller-label {
+		@extend .karma-builder-title-3;
+		color: $builder-main-color;
+		padding: $builder-red-space 0 $builder-red-space;
+	}
+	
+	.radio-image-controller-template {
+		@include flexbox($text-align: center, $align-item: center, $justify-content: space-around);
+		flex-wrap: wrap;
+		width: 100%;
+
+		.radio-image-controller-img {
+			cursor: pointer;
+			padding: 0 5px $builder-red-space;
+			text-align: center;
+
+		}
+		.radio-image-selected-item {
+			svg {
+				opacity: 1;
+			}
+		}
+
+		.radio-image-controller-title {
+			@extend .karma-builder-title-4;
+			color: $builder-main-color-1;
+			display: block;
+			padding-top: $builder-orange-space;
+			text-align: center;
+		}
+	}
+}
+
+.radio-image-border-hover{
+
+	svg {
+		box-shadow: none;
+		display: block;
+		border: 1px solid  transparent;
+		border-radius : 4px;
+		transition: border .2s;
+
+		&:hover{
+			border: 1px solid $builder-accent-color;
+		}
+	}
+	.radio-image-selected-item svg{
+		border: 1px solid $builder-accent-color;
+	}
+}
+
+.radio-image-opacity-hover{
+
+	svg {
+		box-shadow: none;
+		display: block;
+		opacity: .3;
+		transition:  opacity .2s;
+
+		&:hover {
+			opacity: .6;
+		}
+	}
+
+	.radio-image-selected-item svg	{
+		opacity: 1;
+	}
+
+
+}
